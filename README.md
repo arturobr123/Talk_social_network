@@ -1,25 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Talk: The new social network.
 
-Things you may want to cover:
+The posts are divided by areas, you can post, comment, like, DISLIKE, share, have your
+own profile, chat, and a beautiful interface.
 
-* Ruby version
+This is the link:
 
-* System dependencies
+http://talk-social.herokuapp.com/
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# SocialRails
