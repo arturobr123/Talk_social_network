@@ -1,0 +1,19 @@
+%h4.text-center.tituloLikes
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+      %th
+
+  %tbody
+    =link_to(user,class:"BuscadorPartial") do
+      .text-left.paddingBuscados
+        =circle_img user.avatar.url(:medium),40
+        .quitarMargenArriba.MargenIzquierdo
+          = user.username
+
+        
+
+%br

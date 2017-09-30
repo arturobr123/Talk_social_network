@@ -1,0 +1,31 @@
+%h4.text-center.tituloLikes
+  =@userPerfil.friendships.active.count + @userPerfil.followers.active.count
+  Amigos
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+      %th
+
+  %tbody
+    - @userPerfil.friendships.active.decorate.each do |friend|
+      .text-left.paddingLikes
+        =circle_img friend.user_view.avatar.url(:medium),50
+        .quitarMargenArriba.MargenIzquierdo
+          = friend.user_view.username
+          .line-block.text-right
+            = link_to "Ver." ,friend.user, class:"mdl-button mdl-js-button mdl-button--primary"
+
+    - @userPerfil.followers.active.decorate.each do |friend|
+      .text-left.paddingLikes
+        =circle_img friend.user_view.avatar.url(:medium),50
+        .quitarMargenArriba.MargenIzquierdo
+          = friend.user_view.username
+          .line-block.text-right
+            = link_to "Ver." ,friend.user, class:"mdl-button mdl-js-button mdl-button--primary"
+
+        
+
+%br

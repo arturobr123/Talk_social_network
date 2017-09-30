@@ -1,3 +1,89 @@
 // Place all the styles related to the Main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+	background-color: #eee;
+}
+
+.remotipart{
+	display:none;
+}
+
+.main-background{
+	background-image: url(#{asset_path('amigos3.jpg')});
+	background-size: cover;
+	
+}
+
+.slidee{
+	background-color: black;
+	background-size: cover;
+	
+}
+
+.signin-background{
+	background-color: black;
+	background-size: cover;
+	opacity: 0.8;
+
+	
+}
+
+.cover{
+	background-size: cover;
+	background-position: center;
+}
+
+#notification{
+	width: 1.6em;
+	height: 1.6em;
+	display:inline-block;
+	text-decoration:none;
+	text-align:center;
+}
+
+#notifications{
+	position:absolute;
+	background:white;
+	top:65px;
+	left:-100px;
+	width:250px;
+	color:black;
+	max-height:0px;
+	overflow:hidden;
+	transition:all 0.4s;
+	&.active{
+		max-height:300px;
+		padding: 10px 15px;
+		overflow-y:scroll;
+	}
+}
+
+#searches{
+	position:absolute;
+	background:white;
+	top:65px;
+	left:-700px;
+	width:300px;
+	color:black;
+	max-height:0px;
+	overflow:hidden;
+	transition:all 0.4s;
+	&.active{
+		max-height:300px;
+		padding: 10px 15px;
+		overflow-y:scroll;
+	}
+}
+
+.close-parent{
+	cursor:pointer;
+}
+
+.comentarios {
+	overflow:hidden;
+	max-height:500px;
+	overflow-y:scroll;
+	
+}
+

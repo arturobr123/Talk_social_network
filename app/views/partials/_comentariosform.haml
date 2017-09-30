@@ -1,0 +1,7 @@
+=form_for [@post, @post.comments.build], remote: true do |f| # CREAR COMENTARIOS
+   
+  .mdl-textfield.mdl-js-textfield.full-width
+    = f.text_field :body,class:"mdl-textfield__input",type:"text"  ,id: "sample1"
+    = f.label :body, "Comment...",class:"mdl-textfield__label",for: "sample1"
+    .ocultar.actions.text-right
+      = f.submit 'Enviar', class:"mdl-button mdl-js-button mdl-button--raised mdl-button--accent"

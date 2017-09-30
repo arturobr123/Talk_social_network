@@ -1,0 +1,44 @@
+.ajcol3
+  %article.large-padding.white.top-space
+
+    .text-left.relative.padding-bottomPop
+      =@post.iconoPost
+      .quitarMargenArriba.MargenIzquierdo
+        =@post.NombreUsarioPost
+        .line-block.text-right
+          =@post.fechaPost
+
+    %p.top-space.text-left.letraPost=@post.body
+
+    %div.top-space
+      /BOTON ME GUSTA
+      =@post.buttonMeGusta
+      /BOTON NO ME GUSTA
+      =@post.buttonNOOMeGusta
+      /BOTON SHARE
+      =@post.CuantosShare
+      =@post.ButtonShare
+
+    %div.top-space2.comentariosDialog{:id => "comentarios_#{@post.id}"}
+      -if @post.repost_id != nil
+        = render Post.find(@post.repost_id).comments
+      -else 
+        = render @post.comments
+
+
+
+
+    =form_for [@post, @post.comments.build],id:"onclickNumber-share_#{@post.id}", remote: true do |f| 
+     
+      .mdl-textfield.mdl-js-textfield.full-width
+        = f.text_field :body,class:"mdl-textfield__input",type:"text"  ,id: "sample2"
+        = f.label :body, "Comment...",class:"mdl-textfield__label",for: "sample2"
+        .ocultar.actions
+          = f.submit 'Enviar', class:"mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+
+    %button.ocultar.mdl-button#cerrarPopPhoto
+      Agree
+
+
+
+    

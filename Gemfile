@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -32,6 +32,39 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 
 gem 'devise', github: "plataformatec/devise"
+
+gem 'flexbox_rb'
+
+gem 'annotate'
+
+gem "best_in_place", "~> 3.0.1"
+
+
+gem 'autosize-rails'
+
+gem "paperclip" ,"~> 5.0.0beta1"
+
+gem "remotipart", github:"urielhdz/remotipart"
+
+#AASM para state machines
+gem "aasm"
+
+#Activemodel serializers xml 
+gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+
+#Draper para nuestros decoradores
+gem "draper", github:"audionerd/draper",branch:"rails5"
+
+#Popup para imagenes
+#gem 'magnific-popup-rails', '~> 1.1'
+#wilpaginate para paginacion
+gem "will_paginate"
+#sidekiq para los trabajos en el background
+gem 'sidekiq'
+#sinatra
+gem 'sinatra', github: "sinatra/sinatra", require: nil
+#paginate comentarios
+gem 'kaminari', '~> 0.16.3'  
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

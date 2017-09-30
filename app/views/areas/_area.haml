@@ -1,0 +1,68 @@
+%article.large-padding.white.top-space.mdl-shadow--2dp
+  /.line-block.text-right=post.area
+  
+
+  .text-left.relative
+    = circle_img area.user.avatar.url(:medium),50
+    .quitarMargenArriba.MargenIzquierdo
+      =area.user.username
+      .line-block.text-right
+        =area.created_at.strftime("%b. %e, %Y at %I:%M %p")
+         
+
+
+  .indianRed-text.NoUnderline.lighter.text-center.top-space.letraPost
+    =area.title
+
+
+
+  %p.top-space.text-left.letraPost=area.description  #TEXTO PUBLICACION
+
+
+  %div.top-space
+    /BOTON ME GUSTA
+    .text-left
+      -if area.already_votes?(current_user) == false
+        =botonesAreaMegusta area.id
+      -else
+        =botonesAreaYaMegusta area.id
+      %div.line{:id => "CuantosVotes_#{area.id}"}
+        =area.votes.count
+      %div.line 
+        \/100
+
+  -if area.votes.count >=100
+    %p.lighter
+      ACCEPT!
+      /=area.goal
+
+  .ocultar
+    =link_to "A true" ,area_path(area), id:"onclick-goal-area_#{area.id}",method: :patch,remote: true, class:"right-space mdl-button mdl-js-button mdl-button--raised mdl-button--colored" #update, cambiar a true
+
+  %div.ocultar  
+    =form_for [area, area.votes.build], remote: true do |f|
+      = f.submit 'favorite', id:"onclick-vote_#{area.id}" #BOTON ME GUSTA OCULTO
+
+  
+  
+
+
+
+
+
+
+
+
+      
+
+
+
+  
+  
+
+  
+
+
+
+
+

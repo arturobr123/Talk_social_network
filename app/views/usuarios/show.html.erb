@@ -1,0 +1,192 @@
+<html>
+<head>
+
+	<title></title>
+</head>
+<body>
+<%= render "partials/dialogs" %>
+
+
+	<div class="row center-xs">
+
+		<div class="col-xs-10 col-sm-9"> <!--col-xs-10 col-sm-8 col-md-6 col-lg-4 -->
+			 <div class="box">
+
+			 	<div class="perfilPadding white mdl-shadow--2dp top-space relative">
+
+					<div id="user-cover" class="big-padding2 perfil white-text text-left cover relative" style="background-image: url(<%= @user.cover.url(:medium)%>)" >
+
+			 			<%=render "usuarios/menu_avatar"  %>
+			 			<div class="row center-xs top-space fotoPerfil" id="user-avatar">
+			 				<%=circle_img @user.avatar.url(:medium),130  %>
+			 			</div>
+
+			 		</div>							
+
+			 		<section class="row center-xs top-space">
+			 			<div class="row middle-xs">
+			 				
+			 				<div class="col-xs">
+								 <div class="box">
+								 	<h1 class="no-margin medium top-space2">
+								 		<span class="left-space lighter"> <%= best_in_place_if current_user== @user, @user, :username %></span>
+								 		
+								 		
+								 		
+								 	</h1>
+								 	    	
+								 </div>
+							</div>
+
+
+							<div class="col-xs-4 col-sm-2">
+								 <div class="box">
+								 	<% unless @are_friends %>
+									 	<%=button_to friendships_path(friend_id: @user.id),method: :post, remote: true, :"data-type" => "script", class:"mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" do %>
+
+									 	<i class="material-icons"> person_add </i>
+							 		
+							 			<% end %> 
+						 			<% end %> 
+								 	    	
+								 </div>
+							</div>
+
+
+
+			 			</div>
+			 		</section>
+
+			<%= favicon_link_tag 'another_image.ico' %>
+			 		<div class="large-padding">
+			 			<div class="row">
+
+			 				<div class="col-xs">
+								 <div class="box fuente-perfil">
+								 	<i class="lighter"><%=(@user.friend_ids.count) + (@user.user_ids.count) %></i>
+
+								 	<%=link_to "Friends", modalFriends_path(id_user_friends: @user.id),:remote => true, class:"NoUnderline indianRed-text lighter" %>
+								 	
+	 	    	
+								 </div>
+							</div>
+
+							<div class="col-xs">
+								 <div class="box fuente-perfil">
+								 	<%=@user.likes.count %>
+								 	<i class="material-icons corazon">favorite </i>
+								 	
+								 </div>
+							</div>
+
+							<div class="col-xs">
+								 <div class="box fuente-perfil">
+								 	<i class="lighter"><%=@user.posts.count %></i>
+								 	<i>Posts</i>
+								 	
+								 	    	
+								 </div>
+							</div>
+
+			 			</div>
+
+
+			 		<!--	<div class="row center-xs">
+
+			 				<div class="col-xs-8 col-md-10 top-space">
+								 <div class="box">
+
+								 	<span> <%= best_in_place_if current_user== @user, @user, :bio %>  </span>
+								 	
+								 	    	
+								 </div>
+							</div>
+
+			 			</div> -->
+
+
+			 		</div>
+
+
+			 		<div class="top-space">
+
+			 			
+
+			 			<%=form_for @user,remote: true  do |f| %>
+			 			<div style="display:none;">
+			 				<%=f.file_field :avatar,class:"remotipart" %>
+			 				
+			 			</div>
+			 				
+			 				
+			 			<% end %> 
+
+
+			 			<%=form_for @user, remote: true do |f| %>
+			 			<div style="display:none;">
+			 				
+			 				<%=f.file_field :cover, class:"remotipart" %>
+			 			</div>
+			 				
+			 				
+			 			<% end %> 
+
+
+			 		</div>
+
+
+
+			 	</div>
+
+			 	
+    	
+			 </div>
+
+
+
+		</div>
+
+		
+
+		
+
+	</div>
+
+
+	<div class="columnas"></div>
+
+
+	<div class="row center-xs left-space">
+		<div class="col-xs-6">
+					    <div class="text-left">
+
+					    	
+					    	<div class="data"> <%= render @user.posts.nuevos.decorate %> </div>
+					    		
+								
+					    </div>
+			 </div>
+	</div>
+
+</body>
+
+
+
+
+<dialog id="popFriends" class="mdl-dialog" data-backdrop="true">
+
+  	<div id="dialogo-Amigos">
+  		
+  	</div>
+    
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button" id="cerrarFriends">Agree</button>
+
+    </div>
+  </dialog>
+
+
+
+
+</html>
+

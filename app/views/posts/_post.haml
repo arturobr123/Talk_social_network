@@ -1,0 +1,110 @@
+%article.large-padding.white.top-space.mdl-shadow--2dp
+  /.line-block.text-right=post.area
+  
+  -if post.repost_id != nil #COMPARTIÓ PUBLICACIÓN NUEVO!!
+    %div.compartir
+      .text-left.relative
+        = post.linkPostUsuario
+        Share this:
+
+
+
+  .text-left.relative
+    =post.iconoPost
+    .quitarMargenArriba.MargenIzquierdo
+      =post.NombreUsarioPost
+      .line-block.text-right
+        =post.fechaPost
+         
+
+  
+  %p.top-space.text-left.agregarMargenArriba.letraPost=post.body  #TEXTO PUBLICACION
+  
+  
+  /IMAGEN O VIDEO DE POST
+  -if post.photo_file_name != nil
+    -if post.photo.content_type =~ %r(image)    
+      =link_to(PhotoPostModal_path(idpost_param: post.id),:remote=>true) do
+        %div.padding-Picture.cover{:style=>"background-image: url(#{post.photo})"} 
+    -else
+      = video_tag post.photo, :size => "540x300", :controls => true
+    
+
+  %div.top-space
+    /BOTON ME GUSTA
+    =post.buttonMeGusta
+    /BOTON NO ME GUSTA
+    =post.buttonNOOMeGusta
+    /BOTON SHARE
+    =post.CuantosShare
+    =post.ButtonShare
+
+  /comentarios
+  .ocultar
+    -if post.repost_id != nil
+      = @comentarios = Post.find(post.repost_id).comments.paginate(page:params[:comments_page], per_page:3)
+    -else
+      = @comentarios = post.comments.paginate(page:params[:comments_page], per_page:3) 
+  
+  %div{:id => "comentarios_#{post.id}"}
+    = render @comentarios
+
+    .ocultar{:id => "PaginateComentarios_#{post.id}"}
+      = will_paginate @comentarios,:remote =>true,:class => "PaginateClasscomentarios_#{post.id}",:page => params[:comments_page], :params => { :controller => "comments", :action => "moreComments",cualPost: post.id}
+
+
+
+  - if @comentarios.next_page 
+    %a.pointer.moreComments.indianRed-text.lighter{:id => "#{post.id}"}
+      see other
+      = (@comentarios.count - 3)
+      comments
+
+
+
+
+  /Crear Comentarios !!!
+  =form_for [post, post.comments.build],id:"onclickNumber-share_#{post.id}", remote: true do |f| 
+   
+    .mdl-textfield.mdl-js-textfield.full-width.quitarMargenAbajoComentario
+      = f.text_field :body,class:"mdl-textfield__input",type:"text"  ,id: "sample1"
+      = f.label :body, "Comment...",class:"mdl-textfield__label",for: "sample1"
+      .ocultar.actions.text-right
+        = f.submit 'Enviar', class:"mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+
+
+
+
+
+  %div.ocultar
+    =form_for [post, post.shares.build], remote: true do |f|
+      = f.submit 'Enviar',id:"onclickNumber-share_#{post.id}" #BOTON SHARE PARA BD OCULTO
+
+
+  %div.ocultar
+    =form_for [post, post.dislikes.build], remote: true do |f|
+      = f.submit 'favorite', id:"onclick-NOmegusta_#{post.id}" #BOTON NO ME GUSTA OCULTO
+  %div.ocultar  
+    =form_for [post, post.likes.build], remote: true do |f|
+      = f.submit 'favorite', id:"onclick-megusta_#{post.id}" #BOTON ME GUSTA OCULTO
+
+
+  %div.ocultar 
+    =link_to "compartir", repost_post_path(post.id),id:"onclick-share_#{post.id}" ,method: :post,remote: true #BOTON SHARE PARA CREAR POST COMPARTIDO OCULTO 
+  
+
+
+
+      
+
+
+
+  
+  
+
+  
+
+
+
+
+

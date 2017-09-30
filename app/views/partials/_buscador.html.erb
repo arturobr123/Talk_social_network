@@ -1,0 +1,14 @@
+<div class="buscador">
+      <%=form_tag "/search/create", method: :get, remote: true, id:"search-form" do  %>
+          <%=text_field_tag :keyword, nil, placeholder: "Search people", class:"labelBuscador" %>
+
+          <button class="buttonBuscador" type="submit">Search</button>
+
+     <!--     <%=content_tag :button,class:"botonBuscar" ,type: :submit do%>
+            Search
+          <% end %> -->
+
+
+        <% end %>
+
+      </div>

@@ -11,6 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.autosize
 //= require jquery_ujs
+//= require jquery.remotipart
+//= require best_in_place
+//= require best_in_place.jquery-ui
 //= require turbolinks
 //= require_tree .

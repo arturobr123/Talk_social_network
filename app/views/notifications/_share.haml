@@ -1,0 +1,7 @@
+=link_to(PhotoPostModal_path(idpost_param: notification.item.post.id),:remote=>true,class:"linkNotificacion",for:".notificationQUITAR_#{notification.id}") do
+	.text-left
+		=circle_img notification.item.user.avatar.url(:medium),20
+		=notification.item.user.username
+		compartio tu publicacion
+		=link_to notification_path(id: notification.id,notification:{viewed: true}),class:"notification_#{notification.id} ocultar",method: :put do
+			&#9989; 

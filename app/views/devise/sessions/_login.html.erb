@@ -1,0 +1,42 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  	<%= f.email_field :email, autofocus: true, class:"mdl-textfield__input" %>
+  	<%= f.label :email, class:"mdl-textfield__label grey-text" %>
+    
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  	<%= f.password_field :password, autofocus: true, autocomplete: "off", class:"mdl-textfield__input" %>
+  	<%= f.label :password,class:"mdl-textfield__label grey-text" %>
+    
+  </div>
+
+  
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field ">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="top-space">
+
+  	<div class="row middle-xs">
+		<div class="col-xs-12 col-md-6 ">
+		    <div class="box">
+		    	<%= f.submit "Log in", class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+		 		    
+		    </div>
+		</div>
+
+		
+
+	</div>
+
+
+	</div>
+
+  <% end %>

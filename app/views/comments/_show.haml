@@ -1,0 +1,43 @@
+%article.large-padding.white.top-space
+  /Z
+  
+  %button.botonPost.mdl-button.mdl-js-button.mdl-button--icon.mdl-button--colored
+    .material-icons
+      thumb_up
+
+  .text-left.relative
+    =circle_img post.user.avatar.url(:medium),50
+    .quitarMargenArriba.MargenIzquierdo
+      =post.user.username
+
+  
+  %p.top-space.text-left.agregarMargenArriba=post.body
+
+
+  %button.botonPost.mdl-button.mdl-js-button.mdl-button--icon.mdl-button--colored
+    .material-icons
+      thumb_down
+
+
+  .text-right=post.area
+
+  .text-right=post.megusta
+
+
+%h2 Add a comment
+
+=form_for ([@post, @post.comments.build]) do |f|
+  %p
+    = f.label :commenter
+    = f.text_field :commenter
+ 
+  %p
+    = f.label :body
+    = f.text_area :body
+  
+  %p
+    = f.submit
+  
+
+
+

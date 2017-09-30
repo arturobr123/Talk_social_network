@@ -1,0 +1,32 @@
+= form_for @area, remote: true do |f|
+  -if @area.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@area.errors.count, "error")} prohibited this area from being saved:"
+      %ul
+        - @area.errors.full_messages.each do |msg|
+          %li= msg
+
+  .mdl-textfield.mdl-js-textfield
+    = f.text_field :title, class:"mdl-textfield__input",id:"sample1"
+    = f.label :title,"Title" , class:"mdl-textfield__label" ,for:"sample1"
+
+  .mdl-textfield.mdl-js-textfield.full-width
+    = f.text_area :description,class:"mdl-textfield__input",row:"3"
+    = f.label :description, "Description...",class:"mdl-textfield__label"
+    
+
+
+    =f.file_field :photo,class:"ocultar updatePhoto",id:"uploadPhotoVideo"
+  
+
+  .actions.text-right
+    %i.ocultar.material-icons.md-30.upload-something.botonUpload{for:"#uploadPhotoVideo"} insert_photo
+    %i.ocultar.material-icons.md-30.upload-something.botonUpload{for:"#uploadPhotoVideo"} videocam
+    %img#imgSalida.fotoForm{width:"60px", height:"50px", src:"" }
+
+    = f.submit 'Publicar', class:"mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+    
+
+
+
+              

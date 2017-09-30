@@ -1,0 +1,21 @@
+%h1 Listing posts
+
+%table
+  %thead
+    %tr
+      %th Body
+      %th User
+      %th
+      %th
+      %th
+
+  %tbody
+    - @Comments.each do |comment|
+      %tr
+        %td= comment.body
+        %td= comment.commenter
+        %td= link_to 'Destroy', root_path, :method => :delete, :data => { :confirm => 'Are you sure?' } 
+
+%br
+
+/= link_to 'New Post', new_comment_path

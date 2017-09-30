@@ -1,2 +1,89 @@
-<h1>Main#home</h1>
-<p>Find me in app/views/main/home.html.erb</p>
+<html>
+<head>
+	<title></title>
+	
+</head>
+<body>
+
+<%= render "partials/dialogs" %>
+
+
+
+
+<div class="top-space">
+
+	<!--
+	<div class="row end-xs">
+		<div class="col-xs-3">
+		    <div class="box">
+
+		    	<div class="row">
+
+		    		
+					<div class="col-xs-4 text-left">
+					    <div class="box">
+					    	<div class="black large-padding">    </div>
+
+					    	
+
+
+					    </div>
+					</div>
+
+		    	</div>
+
+		    </div>
+		</div>
+	</div> -->
+
+
+
+
+
+	<div class="row center-xs">
+
+		<div class="col-xs-6 ">
+		    <div class="box">
+
+		    	<div class="row">
+
+		    		
+					<div class="col-xs-11 text-left">
+					    <div class="box">
+					    	<div class="white large-padding">  <%= render "posts/form" %>  </div>
+
+					    	<div id="posts">
+					    		<div id="resultados"></div> <!-- buscador -->
+					    		
+					    		<div class="data"> <%= render @postss %> </div>
+
+					    		<div id="pagination"> <%= will_paginate @postss %> </div>
+					    		
+								
+								
+							</div>
+
+
+					  
+
+					    </div>
+					</div>
+
+					
+
+
+
+		    	</div>
+
+		    </div>
+		</div>
+
+	</div>
+</div>
+
+</body>
+</html>
+
+
+
+

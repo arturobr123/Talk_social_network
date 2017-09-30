@@ -1,0 +1,44 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  	<%= f.email_field :email, autofocus: true, class:"mdl-textfield__input"  %>
+	<%= f.label :email, class:"mdl-textfield__label grey-text" %>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  	<%= f.password_field :password, autofocus: true, class:"mdl-textfield__input" %>
+	<%= f.label :password, class:"mdl-textfield__label grey-text" %>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  	<%= f.password_field :password_confirmation, autofocus: true, class:"mdl-textfield__input" %>
+	<%= f.label :password_confirmation, class:"mdl-textfield__label grey-text" %>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label  ">
+	<%= f.text_field :username, autofocus: true, class:"mdl-textfield__input" %>
+	<%= f.label :username, class:"mdl-textfield__label grey-text" %>
+  </div>
+
+  <div class="top-space">
+
+  	<div class="row middle-xs">
+		<div class="col-xs-12 col-md-6 ">
+		    <div class="box">
+		        <%=f.submit "Register",class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored"%>
+		    </div>
+		</div>
+
+		<div class="col-xs-12 col-md-6 ">
+		    <div class="box">
+		        <%= link_to "I have a count",new_user_session_path,class:"pink-text underline"%>
+		    </div>
+		</div>
+
+	</div>
+
+
+	</div>
+
+  <% end %>

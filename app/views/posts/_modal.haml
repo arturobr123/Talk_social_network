@@ -1,0 +1,25 @@
+%h4.text-center.tituloLikes
+  =@post.likes.count
+  Likes
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+      %th
+
+  %tbody
+    - @post.likes.each do |like|
+      .text-left.paddingLikes
+        =circle_img like.user.avatar.url(:medium),50
+        .quitarMargenArriba.MargenIzquierdo
+          = like.user.username
+          .line-block.text-right
+            = link_to "Ver." ,like.user, class:"mdl-button mdl-js-button mdl-button--primary"
+
+        
+
+%br
+
+

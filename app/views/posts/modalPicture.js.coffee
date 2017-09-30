@@ -1,0 +1,5 @@
+$("#popPost").html("<%= escape_javascript(render 'posts/modalPostPhoto') %>")
+dialog = document.getElementById("popPost")
+dialog.showModal()
+console.log("modal")
+componentHandler.upgradeDom()

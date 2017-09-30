@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<div class="row middle-xs">
+
+		<div class="col-xs-2 col-md-1">
+				 <div class="box">
+						
+				 	<%=circle_img friendship.user_view.avatar.url(:thumb), 50 %>
+								 	    	
+				</div>
+		</div>
+
+		<div class="col-xs-7 col-md-7 text-left">
+				 <div class="box">
+						
+				 	<%=friendship.user_view.username %>
+								 	    	
+				</div>
+		</div>
+
+		<div class="col-xs-4">
+				 <div class="box">
+
+				 	<%=friendship.status_or_buttons%>
+								 	    	
+				</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

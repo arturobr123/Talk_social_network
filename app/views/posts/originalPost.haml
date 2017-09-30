@@ -1,0 +1,79 @@
+%article.large-padding.white.top-space
+  /.line-block.text-right=post.area
+
+  .text-left.relative   
+    =circle_img post.user.avatar.url(:medium),50  #FOTO DE USUARIO
+    .quitarMargenArriba.MargenIzquierdo
+      = link_to post.user.username , post.user, class:"indianRed-text NoUnderline lighter"
+      .line-block.text-right=post.created_at.strftime("%d %b. %Y")
+         
+
+  
+  %p.top-space.text-left.agregarMargenArriba.letraPost=post.body  #TEXTO PUBLICACION
+
+  
+  /IMAGEN O VIDEO DE POST
+  -if post.photo_file_name != nil
+    -if post.photo.content_type =~ %r(image)    
+      %a.with-caption.image-link{:href=>"#{post.photo}"}
+        %div.padding-Picture.cover{:style=>"background-image: url(#{post.photo})"} 
+    -else
+      = video_tag post.photo, :size => "540x300", :controls => true
+    
+
+  %div.top-space
+    /BOTON ME GUSTA
+    -if post.already_likes?(current_user) == false
+      =link_to "#{post.likes.count}",likes_path(id_del_post: post.id),id:"likes_#{post.id}",class:"NoUnderline indianRed-text lighter"
+      =botonesPostMegusta post.id
+    -else #YA ME GUSTA
+      =link_to "#{post.likes.count}",likes_path(id_del_post: post.id),id:"likes_#{post.id}",class:"NoUnderline indianRed-text lighter"
+      =botonesPostYaMegusta post.id
+    /BOTON NO ME GUSTA
+    -if post.already_dislikes?(current_user) == false
+      =cuantosMegusta "dislikes_#{post.id}", post.dislikes.count
+      =botonesPostNoMegusta post.id
+    -else #YA NO ME GUSTA
+      =cuantosMegusta "dislikes_#{post.id}", post.dislikes.count
+      =botonesPostYaNoMegusta post.id
+
+  %div
+    =link_to "compartir", repost_post_path(post.id), method: :post,remote: true 
+
+
+  %div{:id => "comentarios_#{post.id}"} 
+    = render post.comments
+
+  /CREAR COMENTARIOS !!!!!!!!!!!!!!!!!!!!!!!!
+  =form_for [post, post.comments.build], remote: true do |f| 
+   
+    .mdl-textfield.mdl-js-textfield.full-width.quitarMargenAbajoComentario
+      = f.text_field :body,class:"mdl-textfield__input",type:"text"  ,id: "sample1"
+      = f.label :body, "Comment...",class:"mdl-textfield__label",for: "sample1"
+      .ocultar.actions.text-right
+        = f.submit 'Enviar', class:"mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+
+
+
+  %div.ocultar  
+    =form_for [post, post.dislikes.build], remote: true do |f|
+      = f.submit 'favorite', id:"onclick-NOmegusta_#{post.id}" #BOTON  NOOO!!ME GUSTA OCULTO 
+  %div.ocultar  
+    =form_for [post, post.likes.build], remote: true do |f|
+      = f.submit 'favorite', id:"onclick-megusta_#{post.id}" #BOTON ME GUSTA OCULTO 
+
+
+
+      
+
+
+
+  
+  
+
+  
+
+
+
+
+

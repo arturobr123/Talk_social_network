@@ -1,0 +1,1 @@
+$("#areas").prepend("<%= j render @area %>")

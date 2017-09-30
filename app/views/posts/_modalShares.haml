@@ -1,0 +1,25 @@
+%h4.text-center.tituloLikes
+  =@post.shares.count
+  Shares
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+      %th
+
+  %tbody
+    - @post.shares.each do |share|
+      .text-left.paddingLikes
+        =circle_img share.user.avatar.url(:medium),50
+        .quitarMargenArriba.MargenIzquierdo
+          = share.user.username
+          .line-block.text-right
+            = link_to "Ver." ,share.user, class:"mdl-button mdl-js-button mdl-button--primary"
+
+        
+
+%br
+
+

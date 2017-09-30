@@ -1,0 +1,72 @@
+<header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title talk"><%=link_to "Talk", root_path,class:"NoUnderline white-text"%></span>
+
+      <%= render "partials/buscador" %>
+
+      <div class="mdl-layout-spacer"></div>
+      <span class="mdl-layout-title area"><%=link_to $global_area_name, root_path,class:"NoUnderline white-text"%></span>
+
+      <div class="right-space iconoNotificaciones">
+
+          <%= link_to "/notifications" , class:"white-text iconoNotificaciones",remote: true,data: {type: "script"} do%> 
+            <div id="notification" class="material-icons mdl-badge mdl-badge--overlap" data-badge="<%=current_user.unviewed_notifications_count%>">notifications</div>
+
+          <% end %> 
+
+      </div>
+
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                  mdl-textfield--floating-label mdl-textfield--align-right">
+
+        <div id="searches"></div>
+        <div id="notifications"></div>
+
+        <%= link_to "library_books" , areas_path, class:"white-text material-icons md-36 NoUnderline hover"%> 
+
+        <%= link_to "group" , friendships_path, class:"white-text material-icons md-36 NoUnderline hover"%> 
+        <%= link_to "assignment_ind" , current_user, class:"white-text material-icons md-36 NoUnderline hover"%> 
+        
+        <%= link_to "exit_to_app" , destroy_user_session_path, method: :delete ,class:"white-text material-icons md-36 NoUnderline hover"%> 
+
+        <div class="mdl-textfield__expandable-holder">
+          <input class="mdl-textfield__input" type="text" name="sample"
+                 id="fixed-header-drawer-exp">
+        </div>
+      </div>
+    </div>
+
+    
+  </header>
+
+
+    <div class="mdl-layout__drawer ">
+    <span class="mdl-layout-title">Talk</span>
+    <nav class="mdl-navigation">
+
+      <%= link_to "#Love", {controller:"main", action:"changeArea", my_param: 23, name:"#Love"}, class:"mdl-navigation__link nav_words" %>
+
+      <%= link_to "#Talk", {controller:"main", action:"changeArea", my_param:"all" ,name:"#Talk"}, class:"mdl-navigation__link nav_words" %>
+
+      <%= link_to "#Friends", {controller:"main", action:"changeArea", my_param: 1,name:"#Friends"}, class:"mdl-navigation__link nav_words" %>
+
+      <%= link_to "#Love", {controller:"main", action:"changeArea", my_param: 2,name:"#Love"}, class:"mdl-navigation__link nav_words" %>
+
+      <%= link_to "#School", {controller:"main", action:"changeArea", my_param: 3,name:"#School"}, class:"mdl-navigation__link nav_words" %>
+
+      <div class="ocultar"> <%= @areasNav = Area.all.GoalTrue %> </div>
+      
+      <% @areasNav.each do |area| %>
+
+      <%= link_to "#" +area.title, {controller:"main", action:"changeArea", my_param: area.id ,name: "#" + area.title}, class:"mdl-navigation__link nav_words" %>
+
+    
+      <% end %>
+
+    </nav>
+  </div>
+
+
+  
+  

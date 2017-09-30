@@ -1,0 +1,20 @@
+%h1 Me gusta de la publicacion
+
+%table
+  %thead
+    %tr
+      %th Usuarios que dieron like
+      %th
+      %th
+      %th
+
+  %tbody
+    - @likes.each do |like|
+      %tr
+        %td= like.user.username
+       
+        
+
+%br
+
+
