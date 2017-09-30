@@ -9,4 +9,6 @@ This is the link:
 
 http://talk-social.herokuapp.com/
 
+MADE IN RUBY ON RAILS
+
 
